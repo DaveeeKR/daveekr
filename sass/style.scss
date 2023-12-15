@@ -10,7 +10,7 @@
 	--second-color: #1f2335;
 	--text-color: #cfdaee;
 	--additional-color: #42a5f5;
-	--mode-color: #fffd37;
+	--mode-color: white;
 }
 
 .light-theme {
@@ -18,23 +18,33 @@
 	--second-color: #f3f3f3;
 	--text-color: #2c2c2c;
 	--additional-color: #42a5f5;
-	--mode-color: #24283b;
+	--mode-color: #ffd900;
 }
 
 .txt {
 	text-decoration: none;
-	font-size: 2.137rem;
 	color: var(--text-color);
+	text-transform: uppercase;
+}
+
+.blue-txt {
+	color: var(--additional-color);
+}
+
+.txt-menu {
+	font-size: 1.8rem;
+	text-decoration: none;
+	text-transform: capitalize;
 }
 
 body {
 	background-color: var(--main-color);
-	transition: 0.2s;
 	nav {
 		button {
 			background-color: transparent;
 			border: 0;
 			cursor: pointer;
+			font-size: 2.137rem;
 		}
 
 		.menu {
@@ -44,25 +54,55 @@ body {
 			align-items: center;
 			height: 10vh;
 			padding: 0 20px 0 20px;
-			transition: background-color 0.2s;
 			.toggle {
 				position: relative;
-				width: 90px;
-				height: 40px;
+				width: 70px;
+				height: 35px;
 				border-radius: 30px;
-				background-color: var(--text-color);
-				box-shadow: 0 0 15px var(--mode-color);
+				background-color: var(--main-color);
+				box-shadow: 0 0 9px var(--mode-color);
+				cursor: pointer;
+				.bi {
+					position: absolute;
+					top: 50%;
+					transform: translatey(-50%) scale(-1, 1);
+					font-size: 16px;
+					transition: left 0.3s;
+					z-index: 100;
+				}
+				.bi-moon {
+					left: 44px;
+					color: var(---color);
+				}
+				.bi-brightness-high {
+					left: 10px;
+					color: #dfdddd73;
+				}
 			}
 			.toggle::before {
 				content: '';
 				position: absolute;
-				height: 28px;
-				width: 28px;
-				background: var(--mode-color);
+				height: 24px;
+				width: 24px;
+				background-color: var(--mode-color);
 				border-radius: 50%;
 				top: 50%;
-				left: 6px;
+				left: 40px;
 				transform: translateY(-50%);
+				transition: left 0.2s;
+			}
+			.toggle.active {
+				.bi-moon {
+					left: 44px;
+					color: #dfdddd;
+				}
+				.bi-brightness-high {
+					color: var(--text-color);
+				}
+			}
+
+			.toggle.active::before {
+				left: 6px;
 			}
 		}
 		.nav {
@@ -72,10 +112,9 @@ body {
 			top: 0;
 			left: -250px;
 			background: var(--second-color);
-			padding: 10px;
+			padding: 7px 0 0 20px;
 			display: flex;
 			flex-direction: column;
-			justify-content: space-between;
 			z-index: 100;
 			transition: left 0.2137s;
 
@@ -83,6 +122,17 @@ body {
 				display: flex;
 				flex-direction: column;
 				list-style-type: none;
+				transform: translateY(50%);
+				a {
+					color: var(--text-color);
+					span {
+						color: var(--additional-color);
+					}
+					i {
+						padding-right: 12px;
+						color: var(--additional-color);
+					}
+				}
 			}
 		}
 		.nav.active {
